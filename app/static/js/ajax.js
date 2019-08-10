@@ -20,6 +20,7 @@ $( document ).ready(function() {
 				dataType: "html",
 				data: $("#ajax_form").serialize(),
 				success: function () {
+					$('#number').val('');
 					$('#result_form').html('Done');
 				},
 				error: function () {
