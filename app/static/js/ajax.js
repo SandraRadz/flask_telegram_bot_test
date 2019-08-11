@@ -7,9 +7,10 @@ $( document ).ready(function() {
 			$.each($('#ajax_form').serializeArray(), function(i, field) {
 				values[field.name] = field.value;
 			});
-			var my_num = Number(values["number"])
-			if (!my_num || my_num<0){
-				$('#result_form').html('Please print positive number');
+			var my_num = values["number"]
+
+			if (/^[a-zA-Z]+$/.test(my_num)){
+				$('#result_form').html('Please print correct number');
 				return false;
 			}
 
