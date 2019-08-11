@@ -11,7 +11,7 @@ def index():
         try:
             from app.models import number_to_db
             number_to_db(number)
-            #send_number_to_bot("Нове замовлення")
+            #send_number_to_bot("New order")
         except:
             return abort(404)
         return jsonify({'success': True}), 200, {'ContentType': 'application/json'}
