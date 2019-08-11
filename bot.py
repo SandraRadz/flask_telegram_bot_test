@@ -1,5 +1,3 @@
-import time
-
 import telebot
 
 from app.models import user_to_db
@@ -12,11 +10,3 @@ def start(message):
     user_to_db(message.from_user.id)
     bot.send_message(message.chat.id, 'Привет, ' + message.from_user.first_name + " " + message.from_user.last_name)
 
-
-while True:
-    try:
-        bot.polling(none_stop=True, interval=1)
-
-    except Exception as e:
-        telebot.logger.error(e)
-        time.sleep(15)

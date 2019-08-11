@@ -7,6 +7,7 @@ from app.models import Number, User, db
 
 app = create_app()
 db.init_app(app)
+db.create_all()
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)

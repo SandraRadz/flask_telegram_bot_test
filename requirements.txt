@@ -1,7 +1,5 @@
 alembic==1.0.11
 Click==7.0
-Django==2.2.4
-django-scheduler==0.8.8
 Flask==1.1.1
 Flask-Migrate==2.5.2
 Flask-Script==2.0.6
