@@ -34,9 +34,9 @@ def number_to_db(number):
 
 
 def get_all_user_id():
-    ids = {}
-    #try:
-    ids = db.session.query(User.user_id).all()
-    #except:
-    #    print("error")
+    try:
+        ids = db.session.query(User.user_id).all()
+    except:
+        print("error")
+        return None
     return ids

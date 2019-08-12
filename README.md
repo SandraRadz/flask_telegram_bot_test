@@ -3,4 +3,3 @@
 3. Make migrations
 	python manage.py db migrate
 	python manage.py db upgrade
-4. Run manage.py and bot.py
