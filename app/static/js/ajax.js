@@ -9,7 +9,7 @@ $( document ).ready(function() {
 			});
 			var my_num = values["number"]
 
-			if (/^[a-zA-Z]+$/.test(my_num)){
+			if (!/^\d+$/.test(my_num)){
 				$('#result_form').html('Please print correct number');
 				return false;
 			}
