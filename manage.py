@@ -8,7 +8,12 @@ import telebot
 from app import create_app
 from app.models import Number, User, db, user_to_db
 
-# app = Flask(__name__)
+token = "984967282:AAH2oy2_VNrUQefzJ9LNCXd2muikSFLPCQU"
+secret = 'sdfn3kglf8dfdfg7sdfs8d'
+url = 'https://SandraRadz.pythonanywhere.com/' + secret
+
+bot = telebot.TeleBot(token, threaded=False)
+
 app = create_app()
 db.init_app(app)
 
@@ -16,11 +21,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 migrate = Migrate(app, db)
 
-token = "984967282:AAH2oy2_VNrUQefzJ9LNCXd2muikSFLPCQU"
-secret = 'sdfn3kglf8dfdfg7sdfs8d'
-url = 'https://SandraRadz.pythonanywhere.com/' + secret
 
-bot = telebot.TeleBot(token, threaded=False)
 bot.remove_webhook()
 
 # time.sleep(1)
