@@ -31,3 +31,12 @@ def number_to_db(number):
         db.session.commit()
     except:
         print("error")
+
+
+def get_all_user_id():
+    ids = {}
+    #try:
+    ids = db.session.query(User.user_id).all()
+    #except:
+    #    print("error")
+    return ids
