@@ -8,7 +8,6 @@ import telebot
 from app import create_app
 from app.models import Number, User, db, user_to_db
 
-
 # app = Flask(__name__)
 app = create_app()
 db.init_app(app)
@@ -23,8 +22,11 @@ url = 'https://SandraRadz.pythonanywhere.com/' + secret
 
 bot = telebot.TeleBot(token, threaded=False)
 bot.remove_webhook()
+
 # time.sleep(1)
+
 bot.set_webhook(url=url)
+
 
 @app.route('/{}'.format(secret), methods=["POST"])
 def webhook():
@@ -35,7 +37,6 @@ def webhook():
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    print("here")
     user_to_db(message.from_user.id)
     bot.send_message(message.chat.id, 'Привет, ' + message.from_user.first_name + " " + message.from_user.last_name)
 
