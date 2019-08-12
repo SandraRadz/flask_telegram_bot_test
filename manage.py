@@ -1,6 +1,6 @@
 import time
 
-from flask import request, Flask
+from flask import request
 from flask_migrate import MigrateCommand, Migrate
 from flask_script import Manager
 import telebot
