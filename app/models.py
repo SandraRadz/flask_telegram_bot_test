@@ -16,9 +16,12 @@ class Number(db.Model):
 
 
 def user_to_db(user):
-    user_id = User(user_id=user)
-    db.session.add(user_id)
-    db.session.commit()
+    try:
+        user_id = User(user_id=user)
+        db.session.add(user_id)
+        db.session.commit()
+    except:
+        print("error")
 
 
 def number_to_db(number):
