@@ -4,7 +4,7 @@ from flask_script import Manager
 import telebot
 
 from app import create_app
-from app.models import Number, User, db, user_to_db
+from app.models import Number, db
 
 
 app = create_app()
@@ -33,16 +33,11 @@ def webhook():
     return "ok", 200
 
 
-@bot.message_handler(commands=['start'])
-def start(message):
-    user_to_db(message.from_user.id)
-    bot.send_message(message.chat.id, 'Привет, ' + message.from_user.first_name + " " + message.from_user.last_name)
-
 
 @bot.callback_query_handler(func=lambda call: True)
 def longname(call):
-    if call.data == "choose":
-        bot.send_message(chat_id=call.message.chat.id, text="Done!")
+    bot.send_message("-1001439919350", text=call.data)
+    bot.delete_message("-1001439919350", call.message.message_id)
 
 if __name__ == '__main__':
     manager.run()
