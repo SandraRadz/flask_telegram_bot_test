@@ -36,7 +36,7 @@ def webhook():
 
 @bot.callback_query_handler(func=lambda call: True)
 def longname(call):
-    bot.send_message("-1001439919350", text=call.data)
+    bot.send_message(call.from_user.id, text=call.data)
     bot.delete_message("-1001439919350", call.message.message_id)
 
 if __name__ == '__main__':
