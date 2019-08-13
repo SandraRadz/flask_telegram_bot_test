@@ -5,6 +5,7 @@ import telebot
 
 from app import create_app
 from app.models import Number, db
+import os
 
 
 app = create_app()
@@ -15,13 +16,12 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 migrate = Migrate(app, db)
 
-token = "984967282:AAH2oy2_VNrUQefzJ9LNCXd2muikSFLPCQU"
-secret = 'sdfn3kglf8dfdfg7sdfs8d'
+token = os.getenv("TOKEN")
+secret = os.getenv("SECRET_KEY")
 url = 'https://SandraRadz.pythonanywhere.com/' + secret
 
 bot = telebot.TeleBot(token, threaded=False)
 bot.remove_webhook()
-# time.sleep(1)
 bot.set_webhook(url=url)
 
 
@@ -31,7 +31,6 @@ def webhook():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     print("Message")
     return "ok", 200
-
 
 
 @bot.callback_query_handler(func=lambda call: True)
